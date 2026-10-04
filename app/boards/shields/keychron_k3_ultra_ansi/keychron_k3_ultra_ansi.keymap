@@ -137,12 +137,15 @@
     };
     combos {
         compatible = "zmk,combos";
-        // Base layers only (0 = mac, 2 = win). Pairs chosen because they are almost never typed
-        // together; 30 ms window plus prior-idle keeps rolls from firing them.
+        // Base layers only (0 = mac, 2 = win). Horizontal two-finger pairs, no pinkies. Symbol pairs
+        // are almost never typed together; prior-idle keeps rolls from firing any of them.
+        // Backspace is U+I, a common bigram: it relies on prior-idle (and the short window, as in
+        // urob's config) and only fires after a pause; hold U+I to key-repeat.
+        combo_bspc    { timeout-ms = <18>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <38 39>; bindings = <&kp BSPC>; };   // U+I
         combo_paren_l { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <49 50>; bindings = <&kp LPAR>; };   // D+F
         combo_paren_r { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <53 54>; bindings = <&kp RPAR>; };   // J+K
-        combo_brace_l { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <32 47>; bindings = <&kp LBRC>; };   // Q+A
-        combo_brace_r { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <41 56>; bindings = <&kp RBRC>; };   // P+;
+        combo_brace_l { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <48 49>; bindings = <&kp LBRC>; };   // S+D
+        combo_brace_r { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <54 55>; bindings = <&kp RBRC>; };   // K+L
         combo_brkt_l  { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <61 62>; bindings = <&kp LBKT>; };   // Z+X
         combo_brkt_r  { timeout-ms = <30>; require-prior-idle-ms = <150>; layers = <0 2>; key-positions = <68 69>; bindings = <&kp RBKT>; };   // ,+.
         combo_a {
