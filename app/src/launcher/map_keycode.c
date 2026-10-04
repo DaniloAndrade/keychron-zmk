@@ -407,6 +407,11 @@ void set_zmk_keymap(uint8_t layer, uint8_t row, uint8_t column, uint16_t keycode
         case KC_BOOT:
             binding.behavior_dev = "lp_bootloader";
             break;
+        case UC_HYPER_ESC:
+            binding.behavior_dev = "hyper_esc";
+            binding.param1 = LS(LC(LA(LGUI)));
+            binding.param2 = ESC;
+            break;
         // case KC_SCRN_LOCK:
         //     binding.behavior_dev="key_press";
         //     binding.param1 =C_AL_LOCK;
@@ -800,6 +805,10 @@ void generate_launcher_keymaps(void) {
                         } else
                             gen_launcher_keymaps[layer][row][column] =
                                 QK_MOD_TAP | (mod_kc_to_launcher(mod) << 8) | (keycode & 0xff);
+
+                    } else if (memcmp(behavior_dev, "hyper_esc", 9) == 0) {
+
+                        gen_launcher_keymaps[layer][row][column] = UC_HYPER_ESC;
 
                     } else if (memcmp(behavior_dev, "sticky_layer", 12) == 0) { //&sl
 

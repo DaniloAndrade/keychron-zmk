@@ -188,6 +188,9 @@ enum {
 #endif
 };
 
+// Caps Lock replacement: tap = Esc, hold = Hyper (hyper_esc behavior in the keymap).
+#define UC_HYPER_ESC QK_KB_31
+
 #define ZMK_BUILDDATE "2025-05-24"
 #define MATRIX_COLS ZMK_MATRIX_COLS
 #define MATRIX_ROWS (ZMK_MATRIX_ROWS - 1)
